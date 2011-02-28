@@ -1,10 +1,19 @@
 <%
-include_javascript 'admin/controls'
-include_javascript 'admin/combobox'
+  include_javascript 'admin/controls'
+  include_javascript 'admin/combobox'
 %>
 
 <% content_for :page_scripts do %>
-   PredefinedParts = <%= Radiant::Config['predefined_parts.parts'].to_s.inspect %>.split(/\s*,\s*/)
+   document.observe('dom:loaded', function() {
+     if (popup = $('add_part_popup')) {
+       var predefined_parts = <%= Radiant::Config['predefined_parts.parts'].to_s.inspect %>.split(/\s*,\s*/)
+       var field_container = popup.select('p').first();
+       field_container.writeAttribute('id', 'parts_field');
+       field_container.insert({after: "<div id='parts_results'></div>"})
+
+       new ComboBox('parts_field', 'parts_results', predefined_parts)
+     }
+   })
 <% end %>
 
 <% content_for :page_css do %>
@@ -20,7 +29,7 @@ include_javascript 'admin/combobox'
 	margin: 0; 
 	padding: 0 4px;
 	background-color: white;
-}	
+}
 
 * html #parts_results ul {
 	position: relative;

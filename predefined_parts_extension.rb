@@ -7,7 +7,6 @@ class PredefinedPartsExtension < Radiant::Extension
     Radiant::Config['predefined_parts.parts'] ||= 'body, content-sec, video' if Radiant::Config.table_exists?
     
     admin.page.edit.add :main, 'predefined_parts_includes', :before => 'edit_header'
-    admin.page.edit.add :popups, 'part_popup'
   end
   
   def deactivate
