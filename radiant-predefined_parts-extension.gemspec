@@ -4,7 +4,7 @@ require "radiant-predefined_parts-extension/version"
 
 Gem::Specification.new do |s|
   s.name        = "radiant-predefined_parts-extension"
-  s.version     = RadiantHtmlTagsExtension::VERSION
+  s.version     = RadiantPredefinedPartsExtension::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Benny Degezelle"]
   s.email       = ["benny@gorilla-webdesign.be"]
@@ -19,6 +19,6 @@ Gem::Specification.new do |s|
   
   s.post_install_message = %{
   Add this to your radiant project with:
-    config.gem 'radiant-predefined_parts-extension', :version => '#{RadiantHtmlTagsExtension::VERSION}'
+    config.gem 'radiant-predefined_parts-extension', :version => '#{RadiantPredefinedPartsExtension::VERSION}'
   }
 end
